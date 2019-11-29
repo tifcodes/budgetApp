@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import "./styles/style.scss"
+
 import Header from "./Header"
 import dbRef from './firebase'
 
@@ -11,7 +12,7 @@ class App extends Component {
       userInput: "",
       amount: "",
       type: "",
-      selectedValue: ""
+      selectedValue: "",
     }
   }
 
@@ -62,7 +63,6 @@ class App extends Component {
       amount: this.state.amount,
       type: this.state.type
     }
-    console.log(transactionToBeAdded)
 
     if (transactionToBeAdded !== "") {
       dbRef.push(transactionToBeAdded)
@@ -80,7 +80,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Header />
         <select onChange={this.handleChangeType} value={this.state.value}>
           <option value="select"> select </option>
@@ -95,32 +95,40 @@ class App extends Component {
           <button type="submit"> Add Transaction to List</button>
         </form>
         <div className="flexParent">
-          <ul>
-            {this.state.transactionList.map((transaction, i) => {
-              const isType = transaction.transactionObject.type === "income"
-              return (
-                (isType) ?
+          <div>
+            <h2> Income </h2>
+            <ul>
+              {this.state.transactionList.map((transaction, i) => {
+                const isType = transaction.transactionObject.type === "income"
+                return (
+                  (isType) ?
 
-                  <li key={i}> {transaction.transactionObject.userInput
-                  } {transaction.transactionObject.amount} <span id={transaction.transactionKey} className="delete" onClick={this.handleDelete}> x </span> </li>
+                    <li key={i}> <i className="fa fa-minus-circle" id={transaction.transactionKey} onClick={this.handleDelete}> </i>{transaction.transactionObject.userInput
+                    } {transaction.transactionObject.amount} </li>
 
-                  : null
-              )
-            })}
-          </ul>
-          <ul>
-            {this.state.transactionList.map((transaction, i) => {
-              const isType = transaction.transactionObject.type === "expenses"
-              return (
-                (isType) ?
+                    : null
+                )
+              })}
+            </ul>
+            <h4> Total : {this.state.amount} </h4>
+          </div>
+          <div>
+            <h2> Expenses </h2>
+            <ul>
+              {this.state.transactionList.map((transaction, i) => {
+                const isType = transaction.transactionObject.type === "expenses"
+                return (
+                  (isType) ?
 
-                  <li key={i}> {transaction.transactionObject.userInput
-                  } {transaction.transactionObject.amount} <span id={transaction.transactionKey} className="delete" onClick={this.handleDelete}> x </span> </li>
+                    <li key={i}> <i className="fa fa-minus-circle" id={transaction.transactionKey} onClick={this.handleDelete}></i>  {transaction.transactionObject.userInput
+                    } {transaction.transactionObject.amount} </li>
 
-                  : null
-              )
-            })}
-          </ul>
+                    : null
+                )
+              })}
+            </ul>
+            <h4> Total : {this.state.amount} </h4>
+          </div>
         </div>
       </div>
     )
