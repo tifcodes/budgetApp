@@ -9,10 +9,12 @@ class App extends Component {
     super();
     this.state = {
       transactionList: [],
+      incomeArray: [],
+      expenseArray: [],
       userInput: "",
       amount: "",
       type: "",
-      selectedValue: "",
+      selectedValue: ""
     }
   }
 
@@ -22,17 +24,29 @@ class App extends Component {
       const transaction = snapshot.val();
 
       const newTransaction = [];
+      const newIncomeArray = [];
+      const newExpenseArray = [];
+
       for (let i in transaction) {
         const individualTransactions = {
           transactionKey: i,
           transactionObject: transaction[i],
-
         }
         newTransaction.push(individualTransactions)
+
+        if (individualTransactions.transactionObject.type === "income") {
+          newIncomeArray.push(individualTransactions.transactionObject.amount)
+        }
+
+        if (individualTransactions.transactionObject.type === "expense") {
+          newExpenseArray.push(individualTransactions.transactionObject.amount)
+        }
       }
 
       this.setState({
-        transactionList: newTransaction
+        transactionList: newTransaction,
+        incomeArray: newIncomeArray,
+        expenseArray: newExpenseArray
       })
     })
   }
@@ -52,12 +66,13 @@ class App extends Component {
 
   handleAmountChange = (event) => {
     this.setState({
-      amount: event.target.value
+      amount: event.target.value,
     })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     const transactionToBeAdded = {
       userInput: this.state.userInput,
       amount: this.state.amount,
@@ -85,7 +100,7 @@ class App extends Component {
         <select onChange={this.handleChangeType} value={this.state.value}>
           <option value="select"> select </option>
           <option value="income"> income </option>
-          <option value="expenses"> expenses</option>
+          <option value="expense"> expense </option>
         </select>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="transactionType"></label>
@@ -110,13 +125,13 @@ class App extends Component {
                 )
               })}
             </ul>
-            <h4> Total : {this.state.amount} </h4>
+            <h4> Total : {this.state.incomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)} </h4>
           </div>
           <div>
             <h2> Expenses </h2>
             <ul>
               {this.state.transactionList.map((transaction, i) => {
-                const isType = transaction.transactionObject.type === "expenses"
+                const isType = transaction.transactionObject.type === "expense"
                 return (
                   (isType) ?
 
@@ -127,7 +142,7 @@ class App extends Component {
                 )
               })}
             </ul>
-            <h4> Total : {this.state.amount} </h4>
+            <h4> Total : {this.state.expenseArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)} </h4>
           </div>
         </div>
       </div>
