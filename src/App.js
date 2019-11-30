@@ -9,12 +9,14 @@ class App extends Component {
     super();
     this.state = {
       transactionList: [],
+      incomeTotal: [],
+      expenseTotal: [],
       incomeArray: [],
       expenseArray: [],
       userInput: "",
       amount: "",
       type: "",
-      selectedValue: ""
+      selectedValue: "",
     }
   }
 
@@ -26,6 +28,8 @@ class App extends Component {
       const newTransaction = [];
       const newIncomeArray = [];
       const newExpenseArray = [];
+      const newIncomeTotal = [];
+      const newExpenseTotal = [];
 
       for (let i in transaction) {
         const individualTransactions = {
@@ -36,17 +40,23 @@ class App extends Component {
 
         if (individualTransactions.transactionObject.type === "income") {
           newIncomeArray.push(individualTransactions.transactionObject.amount)
+          const newIncome = newIncomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+          newIncomeTotal.push(newIncome)
         }
 
         if (individualTransactions.transactionObject.type === "expense") {
           newExpenseArray.push(individualTransactions.transactionObject.amount)
+          const newExpense = newExpenseArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+          newExpenseTotal.push(newExpense)
         }
       }
 
       this.setState({
         transactionList: newTransaction,
         incomeArray: newIncomeArray,
-        expenseArray: newExpenseArray
+        expenseArray: newExpenseArray,
+        incomeTotal: newIncomeTotal,
+        expenseTotal: newExpenseTotal
       })
     })
   }
@@ -63,7 +73,6 @@ class App extends Component {
     })
   }
 
-
   handleAmountChange = (event) => {
     this.setState({
       amount: event.target.value,
@@ -79,7 +88,7 @@ class App extends Component {
       type: this.state.type
     }
 
-    if (transactionToBeAdded !== "") {
+    if (transactionToBeAdded.userInput !== "" && transactionToBeAdded.amount !== "" && transactionToBeAdded.type !== "") {
       dbRef.push(transactionToBeAdded)
       this.setState({
         userInput: "",
@@ -93,12 +102,28 @@ class App extends Component {
     dbRef.child(event.target.id).remove();
   }
 
+  /* <h4> Total : {this.state.incomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)} </h4> */
+
+  handleAdd = (array) => {
+    const totalIncome = array.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+
+    console.log(totalIncome)
+
+    // this.setState({
+    //   total: totalIncome,
+    // })
+  }
+
+
   render() {
+    const finalIncomeTotal = this.state.incomeTotal.pop();
+    const finalExpenseTotal = this.state.expenseTotal.pop();
+    const finalTotal = finalIncomeTotal - finalExpenseTotal;
     return (
       <div className="wrapper">
         <Header />
         <select onChange={this.handleChangeType} value={this.state.value}>
-          <option value="select"> select </option>
+          <option value=""> select </option>
           <option value="income"> income </option>
           <option value="expense"> expense </option>
         </select>
@@ -125,7 +150,7 @@ class App extends Component {
                 )
               })}
             </ul>
-            <h4> Total : {this.state.incomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)} </h4>
+            <h4> Total : {finalIncomeTotal} </h4>
           </div>
           <div>
             <h2> Expenses </h2>
@@ -142,8 +167,9 @@ class App extends Component {
                 )
               })}
             </ul>
-            <h4> Total : {this.state.expenseArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)} </h4>
+            <h4> Total: {finalExpenseTotal} </h4>
           </div>
+          <h3> Balance: {finalTotal} </h3>
         </div>
       </div>
     )
