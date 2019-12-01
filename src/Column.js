@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import dbRef from './firebase'
 
 class Column extends Component {
+  handleDelete = (event) => {
+    dbRef.child(event.target.id).remove();
+  }
+
   render() {
     const finalIncomeTotal = this.props.arrayIncome.reduce((a, b) => parseInt(a) + parseInt(b), 0)
     const finalExpenseTotal = this.props.arrayExpense.reduce((a, b) => parseInt(a) + parseInt(b), 0)
