@@ -1,6 +1,8 @@
 h1 {
   text-transform: uppercase;
   color: $accentColor;
+  font-family: $righteous;
+  font-size: 3rem;
 }
 
 label,
@@ -9,11 +11,13 @@ input {
   width: 100%;
   padding: 10px 0;
   border-radius: 5px;
+  margin: 20px 0;
 }
 
 select {
   border-radius: 5px;
   width: 50%;
+  margin: 10px 0;
 }
 
 input[type="number"] {
@@ -28,6 +32,12 @@ button,
   cursor: pointer;
   margin: 10px;
   border-radius: 5px;
+  text-transform: uppercase;
+  font-family: $righteous;
+  &:hover,
+  &:focus{
+    color: red;
+  }
 }
 
 .flexParent {
@@ -42,14 +52,16 @@ button,
     }
 }
 
-i:hover {
-  color: red
-}
+// i:hover {
+//   color: red
+// }
 
 h2,
 h3,
 h4 {
   margin: 10px 0;
+  font-family: $righteous;
+  text-transform: uppercase;
 }
 
 .colorPop {

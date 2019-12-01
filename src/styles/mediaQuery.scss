@@ -1,0 +1,31 @@
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem; 
+
+  }
+  .flexParent {
+    flex-direction: row;
+    div {
+      width: calc(50% - 20px);
+      margin-right: 10px;
+    }
+  }
+
+  form {
+    text-align: left;
+    button {
+      margin: 10px auto;
+      display: block;
+    }
+  }
+  
+  input {
+    width: calc(50% - 20px);
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  h3 {
+    align-self: center;
+  }
+}

@@ -4,6 +4,8 @@ $fontColor: darken(#8E9E82, 50%);
 $secondaryFontColor: #CACCB6;
 $accentColor: #A9C1D9; 
 
+$righteous: 'Righteous', cursive;
+
 body,
 h1,
 h2,
@@ -26,6 +28,7 @@ li {
 
 body {
   background-color: $backgroundColor;
+  background-image: url(../asset/diagmonds.png);
   color: $fontColor;
   text-align: center;
 }

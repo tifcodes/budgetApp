@@ -78,7 +78,7 @@ class App extends Component {
       type: this.state.type
     }
 
-    if (transactionToBeAdded !== "") {
+    if (transactionToBeAdded.userInput !== "" && transactionToBeAdded.amount !== "" && transactionToBeAdded.type !== "") {
       dbRef.push(transactionToBeAdded)
       this.setState({
         userInput: "",
@@ -104,9 +104,9 @@ class App extends Component {
           <option value="expense"> expense </option>
         </select>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="transactionType"></label>
+          <label htmlFor="transactionType" className = "visuallyHidden"></label>
           <input id="transactionType" type="text" placeholder = "description" value={this.state.userInput} onChange={this.handleUserInputChange} />
-          <label htmlFor="transactionAmount"></label>
+          <label htmlFor="transactionAmount" className = "visuallyHidden"></label>
           <input id="transactionAmount" type="number" placeholder = "amount" value={this.state.amount} onChange={this.handleAmountChange} />
           <button type="submit"> Add Transaction to List</button>
         </form>
@@ -145,8 +145,8 @@ class App extends Component {
             </ul>
             <h4 className = "colorPop"> Total: {finalExpenseTotal} </h4>
           </div>
-          <h3 className ="colorPop"> Balance: {finalTotal} </h3>
         </div>
+        <h3 className ="colorPop"> Balance: {finalTotal} </h3>
       </div>
     )
   }
