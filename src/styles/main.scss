@@ -22,9 +22,7 @@ select {
   border-radius: 5px;
   width: 50%;
   margin: 10px 0;
-  &:hover {
-    
-  };
+  &:hover,
   &:focus{
     box-shadow: 0 0 3px 2px $accentColor;
   }
@@ -47,6 +45,9 @@ button,
   font-family: $righteous;
 }
 
+.fa {
+  font-family: FontAwesome !important;
+}
 button:hover,
 button:focus {
   box-shadow: 0 0 3px 2px $accentColor;
@@ -80,4 +81,19 @@ h4 {
 
 .colorPop {
   color: white;
+}
+
+.colorPositive {
+  color: greenyellow;
+}
+
+.colorNegative {
+  color: red;
+}
+
+h3 {
+  background-color: $secondaryColor;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px;
 }
