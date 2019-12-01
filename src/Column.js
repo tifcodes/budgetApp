@@ -7,8 +7,8 @@ class Column extends Component {
   }
 
   render() {
-    const finalIncomeTotal = this.props.arrayIncome.reduce((a, b) => parseInt(a) + parseInt(b), 0)
-    const finalExpenseTotal = this.props.arrayExpense.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+    const finalIncomeTotal = this.props.arrayIncome.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
+    const finalExpenseTotal = this.props.arrayExpense.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
     const finalTotal = finalIncomeTotal - finalExpenseTotal;
     return (
       <div>
@@ -28,7 +28,7 @@ class Column extends Component {
                 )
               })}
             </ul>
-            <h4 className="colorPop"> Total : {finalIncomeTotal} </h4>
+            <h4 className="colorPop"> Total : {finalIncomeTotal.toFixed(2)} </h4>
           </div>
           <div>
             <h2> Expenses </h2>
@@ -45,10 +45,10 @@ class Column extends Component {
                 )
               })}
             </ul>
-            <h4 className="colorPop"> Total: {finalExpenseTotal} </h4>
+            <h4 className="colorPop"> Total: {finalExpenseTotal.toFixed(2)} </h4>
           </div>
         </div>
-        <h3 className="colorPop"> Balance: {finalTotal} </h3>
+        <h3 className="colorPop"> Balance: {finalTotal.toFixed(2)} </h3>
       </div>
     )
   }

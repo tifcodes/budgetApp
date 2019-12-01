@@ -117,10 +117,10 @@ class App extends Component {
           <label htmlFor="transactionType" className="visuallyHidden"></label>
           <input id="transactionType" type="text" placeholder="description" value={this.state.userInput} onChange={this.handleUserInputChange} />
           <label htmlFor="transactionAmount" className="visuallyHidden"></label>
-          <input id="transactionAmount" type="number" placeholder="amount" min = "0" step = ".01" value={this.state.amount} onChange={this.handleAmountChange} />
+          <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
           <button type="submit"> Add Transaction to List</button>
         </form>
-        <Column arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete}/>
+        <Column arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
       </div>
     )
   }
