@@ -1,12 +1,15 @@
 $backgroundColor: #607890;
-$secondaryColor: #8E9E82;
-$fontColor: #F2F0DF;
-$secondaryFontColor:  #CACCB6;
-$accentColor:  #A9C1D9;
+$secondaryColor:  #F2F0DF;
+$fontColor: darken(#8E9E82, 50%);
+$secondaryFontColor: #CACCB6;
+$accentColor: #A9C1D9; 
 
 body,
 h1,
-h2 {
+h2,
+h3, 
+h4,
+ul {
   margin: 0;
   padding: 0;
 }
@@ -24,4 +27,5 @@ li {
 body {
   background-color: $backgroundColor;
   color: $fontColor;
+  text-align: center;
 }
