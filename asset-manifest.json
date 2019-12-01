@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/tiffanyWongProjectFive/static/css/main.6d19963c.chunk.css",
+    "main.js": "/tiffanyWongProjectFive/static/js/main.67b98105.chunk.js",
+    "main.js.map": "/tiffanyWongProjectFive/static/js/main.67b98105.chunk.js.map",
+    "runtime-main.js": "/tiffanyWongProjectFive/static/js/runtime-main.7c9c2a9b.js",
+    "runtime-main.js.map": "/tiffanyWongProjectFive/static/js/runtime-main.7c9c2a9b.js.map",
+    "static/css/2.db6f0201.chunk.css": "/tiffanyWongProjectFive/static/css/2.db6f0201.chunk.css",
+    "static/js/2.fc82733e.chunk.js": "/tiffanyWongProjectFive/static/js/2.fc82733e.chunk.js",
+    "static/js/2.fc82733e.chunk.js.map": "/tiffanyWongProjectFive/static/js/2.fc82733e.chunk.js.map",
+    "index.html": "/tiffanyWongProjectFive/index.html",
+    "precache-manifest.0997258d1a1a2f7f325814a4baf9af06.js": "/tiffanyWongProjectFive/precache-manifest.0997258d1a1a2f7f325814a4baf9af06.js",
+    "service-worker.js": "/tiffanyWongProjectFive/service-worker.js",
+    "static/css/2.db6f0201.chunk.css.map": "/tiffanyWongProjectFive/static/css/2.db6f0201.chunk.css.map",
+    "static/css/main.6d19963c.chunk.css.map": "/tiffanyWongProjectFive/static/css/main.6d19963c.chunk.css.map",
+    "static/media/font-awesome.min.css": "/tiffanyWongProjectFive/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c9c2a9b.js",
+    "static/css/2.db6f0201.chunk.css",
+    "static/js/2.fc82733e.chunk.js",
+    "static/css/main.6d19963c.chunk.css",
+    "static/js/main.67b98105.chunk.js"
+  ]
+}
