@@ -3,8 +3,14 @@ import "./styles/style.scss"
 
 import Header from "./Header"
 import dbRef from './firebase'
-import Column from './Column'
+import ShowColumn from './Column'
 
+function validate(userInput, amount){
+  return {
+    userInput: userInput.length === 0,
+    amount: amount.length === 0
+  }
+}
 class App extends Component {
   constructor() {
     super();
@@ -100,11 +106,9 @@ class App extends Component {
     }
   }
 
-  // handleDelete = (event) => {
-  //   dbRef.child(event.target.id).remove();
-  // }
-
   render() {
+    const errors = validate(this.state.userInput, this.state.amount)
+    console.log(errors)
     return (
       <div className="wrapper">
         <Header />
@@ -120,7 +124,7 @@ class App extends Component {
           <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
           <button type="submit"> Add Transaction to List</button>
         </form>
-        <Column arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
+        <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
       </div>
     )
   }

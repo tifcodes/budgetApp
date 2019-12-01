@@ -36,3 +36,10 @@ body {
   color: $fontColor;
   text-align: center;
 }
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}

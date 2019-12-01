@@ -5,6 +5,21 @@ h1 {
   font-size: 3rem;
 }
 
+h2,
+h3,
+h4 {
+  margin: 10px 0;
+  font-family: $righteous;
+  text-transform: uppercase;
+}
+
+h3 {
+  background-color: $secondaryColor;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
 label,
 input {
   display: block;
@@ -28,34 +43,31 @@ select {
   }
 }
 
-
-input[type="number"] {
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
-  appearance: textfield;
-  margin: 0;
+button {
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-family: $righteous;
+  background-color: $secondaryColor;
+  border-radius: 5px;
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 3px 2px $accentColor;
+  }
 }
 
-button,
 .fa-minus-circle {
   cursor: pointer;
   margin: 10px;
   border-radius: 5px;
   text-transform: uppercase;
   font-family: $righteous;
-}
-
-.fa {
   font-family: FontAwesome !important;
-}
-button:hover,
-button:focus {
-  box-shadow: 0 0 3px 2px $accentColor;
-}
-
-i:hover,
-i:focus{
-  color: $secondaryFontColor;
+  &:hover,
+  &:focus{
+    color: $secondaryFontColor;
+  } 
 }
 
 .flexParent {
@@ -70,30 +82,15 @@ i:focus{
     }
 }
 
-
-h2,
-h3,
-h4 {
-  margin: 10px 0;
-  font-family: $righteous;
-  text-transform: uppercase;
-}
-
 .colorPop {
   color: white;
 }
 
 .colorPositive {
-  color: greenyellow;
+  color: green;
 }
 
 .colorNegative {
   color: red;
 }
 
-h3 {
-  background-color: $secondaryColor;
-  border-radius: 5px;
-  display: inline-block;
-  padding: 5px 10px;
-}

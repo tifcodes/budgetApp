@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import dbRef from './firebase'
 
-class Column extends Component {
+class ShowColumn extends Component {
   handleDelete = (event) => {
     dbRef.child(event.target.id).remove();
   }
@@ -62,4 +62,4 @@ class Column extends Component {
   }
 }
 
-export default Column;
+export default ShowColumn;
