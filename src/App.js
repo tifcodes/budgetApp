@@ -3,6 +3,7 @@ import "./styles/style.scss"
 
 import Header from "./Header"
 import dbRef from './firebase'
+import Column from "./Column"
 
 class App extends Component {
   constructor() {
@@ -85,6 +86,18 @@ class App extends Component {
         amount: "",
       })
     }
+
+    if (transactionToBeAdded.type === "") {
+      alert("missing type")
+    }
+
+    if (transactionToBeAdded.userInput === "") {
+      alert("missing description")
+    }
+
+    if (transactionToBeAdded.amount === "") {
+      alert("missing amount")
+    }
   }
 
   handleDelete = (event) => {
@@ -92,9 +105,9 @@ class App extends Component {
   }
 
   render() {
-    const finalIncomeTotal = this.state.incomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
-    const finalExpenseTotal = this.state.expenseArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
-    const finalTotal = finalIncomeTotal - finalExpenseTotal;
+    // const finalIncomeTotal = this.state.incomeArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+    // const finalExpenseTotal = this.state.expenseArray.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+    // const finalTotal = finalIncomeTotal - finalExpenseTotal;
     return (
       <div className="wrapper">
         <Header />
@@ -110,7 +123,7 @@ class App extends Component {
           <input id="transactionAmount" type="number" placeholder = "amount" value={this.state.amount} onChange={this.handleAmountChange} />
           <button type="submit"> Add Transaction to List</button>
         </form>
-        <div className="flexParent">
+        {/* <div className="flexParent">
           <div>
             <h2> Income </h2>
             <ul>
@@ -146,7 +159,7 @@ class App extends Component {
             <h4 className = "colorPop"> Total: {finalExpenseTotal} </h4>
           </div>
         </div>
-        <h3 className ="colorPop"> Balance: {finalTotal} </h3>
+        <h3 className ="colorPop"> Balance: {finalTotal} </h3> */}
       </div>
     )
   }
