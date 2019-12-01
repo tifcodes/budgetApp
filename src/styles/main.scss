@@ -9,16 +9,25 @@ label,
 input {
   display: block;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
   border-radius: 5px;
   margin: 20px 0;
+  &:hover,
+  &:focus{
+    box-shadow: 0 0 3px 2px $secondaryFontColor;
+  }
 }
 
 select {
   border-radius: 5px;
   width: 50%;
   margin: 10px 0;
+  &:hover,
+  &:focus{
+    box-shadow: 0 0 3px 2px $secondaryFontColor;
+  }
 }
+
 
 input[type="number"] {
   -webkit-appearance: textfield;
@@ -34,10 +43,14 @@ button,
   border-radius: 5px;
   text-transform: uppercase;
   font-family: $righteous;
-  &:hover,
-  &:focus{
-    color: red;
+  &:hover{
+    color: $secondaryFontColor;
   }
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 0 3px 2px $secondaryFontColor;
 }
 
 .flexParent {
@@ -52,9 +65,6 @@ button,
     }
 }
 
-// i:hover {
-//   color: red
-// }
 
 h2,
 h3,
