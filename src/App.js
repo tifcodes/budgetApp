@@ -16,12 +16,11 @@ class App extends Component {
       userInput: "",
       amount: "",
       type: "",
-      selectedValue: "",
+      selectedValue: {label: "select"},
     }
   }
 
   componentDidMount() {
-
     dbRef.on("value", (snapshot) => {
       const transaction = snapshot.val();
 
@@ -89,7 +88,15 @@ class App extends Component {
     }
   }
 
+  // handleReset = (event) => {
+  //   this.setState({
+  //     userInput: "",
+  //     amount: "",
+  //   })
+  // }
+
   render() {
+    console.log(this.state.type)
     const { userInput, amount } = this.state
     const isEnabled = userInput.length > 0 && amount.length > 0
     return (
@@ -97,7 +104,7 @@ class App extends Component {
         <Header />
         <main>
           <select onChange={this.handleChangeType} value={this.state.value}>
-            <option value=""> select </option>
+            <option value="null" > select </option>
             <option value="income"> income </option>
             <option value="expense"> expense </option>
           </select>
@@ -107,6 +114,7 @@ class App extends Component {
             <label htmlFor="transactionAmount" className="visuallyHidden"></label>
             <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
             <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
+            {/* <button type="button" onClick={this.handleReset} > Reset </button> */}
           </form>
           <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
         </main>
