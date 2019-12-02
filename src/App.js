@@ -4,13 +4,8 @@ import "./styles/style.scss"
 import Header from "./Header"
 import dbRef from './firebase'
 import ShowColumn from './Column'
+import Footer from './Footer'
 
-function validate(userInput, amount){
-  return {
-    userInput: userInput.length === 0,
-    amount: amount.length === 0
-  }
-}
 class App extends Component {
   constructor() {
     super();
@@ -92,39 +87,30 @@ class App extends Component {
         amount: "",
       })
     }
-
-    if (transactionToBeAdded.type === "") {
-      alert("missing type")
-    }
-
-    if (transactionToBeAdded.userInput === "") {
-      alert("missing description")
-    }
-
-    if (transactionToBeAdded.amount === "") {
-      alert("missing amount")
-    }
   }
 
   render() {
-    const errors = validate(this.state.userInput, this.state.amount)
-    console.log(errors)
+    const { userInput, amount } = this.state
+    const isEnabled = userInput.length > 0 && amount.length > 0
     return (
       <div className="wrapper">
         <Header />
-        <select onChange={this.handleChangeType} value={this.state.value}>
-          <option value=""> select </option>
-          <option value="income"> income </option>
-          <option value="expense"> expense </option>
-        </select>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="transactionType" className="visuallyHidden"></label>
-          <input id="transactionType" type="text" placeholder="description" value={this.state.userInput} onChange={this.handleUserInputChange} />
-          <label htmlFor="transactionAmount" className="visuallyHidden"></label>
-          <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
-          <button type="submit"> Add Transaction to List</button>
-        </form>
-        <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
+        <main>
+          <select onChange={this.handleChangeType} value={this.state.value}>
+            <option value=""> select </option>
+            <option value="income"> income </option>
+            <option value="expense"> expense </option>
+          </select>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="transactionType" className="visuallyHidden"></label>
+            <input id="transactionType" type="text" placeholder="description" value={this.state.userInput} onChange={this.handleUserInputChange} />
+            <label htmlFor="transactionAmount" className="visuallyHidden"></label>
+            <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
+            <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
+          </form>
+          <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
+        </main>
+        <Footer />
       </div>
     )
   }

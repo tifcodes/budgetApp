@@ -21,7 +21,7 @@ class ShowColumn extends Component {
                 return (
                   (isType) ?
 
-                    <li key={i}> <i className="fa fa-minus-circle" aria-hidden="true" id={transaction.transactionKey} onClick={this.handleDelete}> </i>{transaction.transactionObject.userInput
+                    <li key={i}> <i className="fa fa-minus-circle" aria-hidden="true" id={transaction.transactionKey} onClick={this.handleDelete}> </i>  {transaction.transactionObject.userInput
                     } : {transaction.transactionObject.amount} </li>
 
                     : null
