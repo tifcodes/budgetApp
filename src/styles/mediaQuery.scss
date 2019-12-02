@@ -14,9 +14,16 @@
   
     form {
       text-align: left;
+      div {
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 10px 5px;
+        }
+      }
       button {
-        margin: 10px auto;
-        display: block;
+        // margin: 10px auto;
+        // // display: block;
         // display: inline-block;
       }
     }

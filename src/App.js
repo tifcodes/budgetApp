@@ -16,10 +16,11 @@ class App extends Component {
       userInput: "",
       amount: "",
       type: "",
-      selectedValue: {label: "select"},
+      selectedValue: "",
     }
   }
 
+// listening to firebase
   componentDidMount() {
     dbRef.on("value", (snapshot) => {
       const transaction = snapshot.val();
@@ -52,24 +53,28 @@ class App extends Component {
     })
   }
 
+// changing the income and expense drop down
   handleChangeType = (event) => {
     this.setState({
       type: event.target.value
     })
   }
 
+// listening to changes in the description
   handleUserInputChange = (event) => {
     this.setState({
       userInput: event.target.value,
     })
   }
 
+// listening to changes in the amount
   handleAmountChange = (event) => {
     this.setState({
       amount: event.target.value,
     })
   }
 
+// submit 
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -92,22 +97,24 @@ class App extends Component {
   //   this.setState({
   //     userInput: "",
   //     amount: "",
+  //     type: ""
   //   })
   // }
 
   render() {
-    console.log(this.state.type)
     const { userInput, amount } = this.state
     const isEnabled = userInput.length > 0 && amount.length > 0
     return (
       <div className="wrapper">
         <Header />
+        {/* dropdown menu */}
         <main>
           <select onChange={this.handleChangeType} value={this.state.value}>
-            <option value="null" > select </option>
+            <option value="" > select </option>
             <option value="income"> income </option>
             <option value="expense"> expense </option>
           </select>
+        {/* form */}
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="transactionType" className="visuallyHidden"></label>
             <input id="transactionType" type="text" placeholder="description" value={this.state.userInput} onChange={this.handleUserInputChange} />
@@ -116,6 +123,7 @@ class App extends Component {
             <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
             {/* <button type="button" onClick={this.handleReset} > Reset </button> */}
           </form>
+        {/* column */}
           <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
         </main>
         <Footer />
