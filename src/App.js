@@ -114,7 +114,6 @@ class App extends Component {
   // }
 
   login = () => {
-    console.log("hello")
     auth.signInWithPopup(provider).then((result) => {
       const user = result.user;
       this.setState({
