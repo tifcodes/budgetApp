@@ -7,8 +7,6 @@ import ShowColumn from './Column'
 import Footer from './Footer'
 
 const dbRef = firebase.database().ref();
-const provider = new firebase.auth.GoogleAuthProvider();
-const auth = firebase.auth();
 
 class App extends Component {
   constructor() {
@@ -54,14 +52,6 @@ class App extends Component {
         incomeArray: newIncomeArray,
         expenseArray: newExpenseArray,
       })
-    })
-
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState ({
-          user
-        })
-      }
     })
   }
 
@@ -113,30 +103,12 @@ class App extends Component {
   //   })
   // }
 
-  login = () => {
-    auth.signInWithPopup(provider).then((result) => {
-      const user = result.user;
-      this.setState({
-        user
-      })
-    })
-  }
-
-  logout = () => {
-    auth.signOut().then(() => {
-      this.setState({
-        user: null
-      })
-    })
-  }
-
   render() {
     const { userInput, amount } = this.state
     const isEnabled = userInput.length > 0 && amount.length > 0
     return (
       <div className="wrapper">
         <Header />
-        {this.state.user ? <button onClick={this.logout}> Log Out </button> : <button onClick={this.login}> Log In </button>}
         {/* dropdown menu */}
         <main>
           <select onChange={this.handleChangeType} value={this.state.value}>
