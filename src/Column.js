@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import dbRef from './firebase'
+import firebase from './firebase'
+
+const dbRef = firebase.database().ref();
 
 class ShowColumn extends Component {
   handleDelete = (event) => {
@@ -49,7 +51,7 @@ class ShowColumn extends Component {
           </div>
         </div>
         <div>
-          {finalTotal.toFixed(2) > 0 ?
+          {finalTotal.toFixed(2) >= 0 ?
 
             <h3 className="colorPositive"> Balance: $ {finalTotal.toFixed(2)} </h3>
 
