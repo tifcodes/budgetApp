@@ -14,16 +14,18 @@ h1 {
   font-size: 3rem;
 }
 
-button {
-    border-radius: 5px;
-    border: none;
-    background-color: $accentColor;
-    display: block;
-    margin: 10px auto;
-    &:hover,
-    &:focus {
-      box-shadow: 0 0 3px 2px $accentColor;
-    }
+header {
+  button {
+      border-radius: 5px;
+      border: none;
+      background-color: $accentColor;
+      display: block;
+      margin: 10px auto;
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 3px 2px $accentColor;
+      }
+  }
 }
 
 main {
