@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import firebase from './firebase'
 
-const dbRef = firebase.database().ref();
+// const dbRef = firebase.database().ref();
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
 
