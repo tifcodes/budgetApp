@@ -1,5 +1,5 @@
 ## Authors
 
-Tiffany Wong - (https://github.com/tifcodes)
+Tiffany Wong - tifcodes (https://github.com/tifcodes)
 
 
