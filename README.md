@@ -5,7 +5,7 @@
 Input your income and expenses and it will show you how much money you still have remaining
 
 ### Working On
-Adding user authentication
+Adding user authentication <br>
 Adding specific categories (rent budget, the expense will go to rent)
 
 ### Build with 
