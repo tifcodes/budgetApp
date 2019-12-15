@@ -17,8 +17,7 @@ class App extends Component {
       expenseArray: [],
       userInput: "",
       amount: "",
-      type: "",
-      selectedValue: "",
+      type: "select",
     }
   }
 
@@ -95,6 +94,14 @@ class App extends Component {
     }
   }
 
+  handleReset = (event) => {
+    this.setState({
+      userInput: "",
+      amount: "",
+      type: ""
+    })
+  }
+
   render() {
     const { userInput, amount } = this.state
     const isEnabled = userInput.length > 0 && amount.length > 0
@@ -103,7 +110,7 @@ class App extends Component {
         <Header />
         {/* dropdown menu */}
         <main>
-          <select onChange={this.handleChangeType} value={this.state.value}>
+          <select onChange={this.handleChangeType} value={this.state.type}>
             <option value="" > select </option>
             <option value="income"> income </option>
             <option value="expense"> expense </option>
@@ -115,6 +122,7 @@ class App extends Component {
             <label htmlFor="transactionAmount" className="visuallyHidden"></label>
             <input id="transactionAmount" type="number" placeholder="amount" min="0" step=".01" value={this.state.amount} onChange={this.handleAmountChange} />
             <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
+            <button type="button" onClick={this.handleReset} > Reset </button>
           </form>
           {/* column */}
           <ShowColumn arrayIncome={this.state.incomeArray} arrayExpense={this.state.expenseArray} listTransaction={this.state.transactionList} delete={this.state.handleDelete} />
