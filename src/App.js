@@ -103,7 +103,7 @@ class App extends Component {
   }
 
   render() {
-    const { description, amount } = this.state
+    const { description, amount, type, incomeArray, expenseArray, transList } = this.state
     const isEnabled = description.length > 0 && amount.length > 0
     return (
       <div className="wrapper">
@@ -111,7 +111,7 @@ class App extends Component {
         {/* dropdown menu */}
         <main>
           <select 
-          onChange={this.handleChangeType} value={this.state.type}>
+          onChange={this.handleChangeType} value={type}>
             <option value="" > select </option>
             <option value="income"> income </option>
             <option value="expense"> expense </option>
@@ -120,18 +120,18 @@ class App extends Component {
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="transType" className="visuallyHidden"></label>
             <input id="transType" type="text" placeholder="description" 
-            value={this.state.description} onChange={this.handleDescription} />
+            value={description} onChange={this.handleDescription} />
             <label htmlFor="transAmount" className="visuallyHidden"></label>
             <input id="transAmount" type="number" placeholder="amount" min="0" step=".01" 
-            value={this.state.amount} 
+            value={amount} 
             onChange={this.handleAmountChange} />
             <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
             <button type="button" onClick={this.handleReset} > Reset </button>
           </form>
           {/* column */}
           <ShowColumn 
-          incomeArray={this.state.incomeArray} expenseArray={this.state.expenseArray}
-          listTrans={this.state.transList} />
+          incomeArray={incomeArray} expenseArray={expenseArray}
+          listTrans={transList} />
         </main>
         <Footer />
       </div>

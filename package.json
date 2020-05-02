@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "homepage": "https://tifcodes.github.io/budgetApp",
-=======
   "homepage": "https://tifcodes.github.io/tiffanyWongProjectFive",
->>>>>>> da642ad4e69816f4e9fd11a822b15652fd1d2535
   "name": "budget-app",
   "version": "0.1.0",
   "private": true,
