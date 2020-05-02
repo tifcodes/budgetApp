@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import firebase from './firebase'
+import dbRef from './firebase'
 
-const dbRef = firebase.database().ref();
 
 class ShowColumn extends Component {
   handleDelete = (event) => {

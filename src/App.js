@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import "./styles/style.scss"
 
 import Header from "./Header"
-import firebase from './firebase'
+import dbRef from './firebase'
 import ShowColumn from './Column'
 import Footer from './Footer'
-
-const dbRef = firebase.database().ref();
 
 class App extends Component {
   constructor() {
@@ -130,7 +128,8 @@ class App extends Component {
           </form>
           {/* column */}
           <ShowColumn 
-          incomeArray={incomeArray} expenseArray={expenseArray}
+          incomeArray={incomeArray} 
+          expenseArray={expenseArray}
           listTrans={transList} />
         </main>
         <Footer />
