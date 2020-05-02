@@ -7,7 +7,8 @@ Input your income and expenses and it will show you how much money you still hav
 
 ### Working On
 Adding user authentication <br>
-Adding specific categories (rent budget, the expense will go to rent)
+Adding specific categories (food budget, the expense the user input (grocery) will go to food budget)<br>
+Letting user know if they are close to their budget and if they went over
 
 ### Build with 
 
