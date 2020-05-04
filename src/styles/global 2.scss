@@ -1,0 +1,40 @@
+$backgroundColor: #607890;
+$secondaryColor:  #F2F0DF;
+$fontColor: darken(#8E9E82, 50%);
+$secondaryFontColor: #ff0000;
+$accentColor: #A9C1D9; 
+
+$righteous: 'Righteous', cursive;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 125%;
+}
+
+li {
+  list-style-type: none;
+}
+
+.wrapper {
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+body {
+  background-color: $backgroundColor;
+  background-image: url(../asset/diagmonds.png);
+  color: $fontColor;
+  text-align: center;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}

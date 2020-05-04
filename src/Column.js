@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import dbRef from './firebase'
 
-
 class ShowColumn extends Component {
   handleDelete = (event) => {
     dbRef.child(event.target.id).remove();
@@ -20,6 +19,7 @@ class ShowColumn extends Component {
   }
 
   render() {
+    // const {transKey} = this.props.transList
     return (
       <div>
         <div className="flexParent">
@@ -27,14 +27,14 @@ class ShowColumn extends Component {
             <h2> Income </h2>
             <ul>
               {this.props.transList.map((trans, i) => {
-                const isType = trans.transObject.type === "income"
+                const {type, description, amount} = trans.transObject;               
                 return (
-                  (isType) ?
+                  (type === "income") ?
 
                     <li key={i}> 
                     <i className="fa fa-minus-circle" aria-hidden="true" 
-                    id={trans.transKey} onClick={this.handleDelete}> </i>  {trans.transObject.description
-                    } : {trans.transObject.amount} </li>
+                    id={trans.transKey} onClick={this.handleDelete}> </i>  {description
+                    } : {amount} </li>
 
                     : null
                 )
@@ -46,13 +46,13 @@ class ShowColumn extends Component {
             <h2> Expenses </h2>
             <ul>
               {this.props.transList.map((trans, i) => {
-                const isType = trans.transObject.type === "expense"
+                const { type, description, amount } = trans.transObject; 
                 return (
-                  (isType) ?
+                  (type === "expense") ?
 
                     <li key={i}> 
-                    <i className="fa fa-minus-circle" aria-hidden="true" id={trans.transKey} onClick={this.handleDelete}></i>  {trans.transObject.description
-                    } : {trans.transObject.amount} </li>
+                    <i className="fa fa-minus-circle" aria-hidden="true" id={trans.transKey} onClick={this.handleDelete}></i>  {description
+                    } : {amount} </li>
 
                     : null
                 )
