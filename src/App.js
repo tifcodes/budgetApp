@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./styles/style.scss"
 
 import Header from "./Header"
+import Form from "./Form"
 import dbRef from './firebase'
 import ShowColumn from './Column'
 import Footer from './Footer'
@@ -13,9 +14,6 @@ class App extends Component {
       transList: [],
       incomeArray: [],
       expenseArray: [],
-      description: "",
-      amount: "",
-      type: "select",
     }
   }
 
@@ -52,85 +50,21 @@ class App extends Component {
     })
   }
 
-  // changing the income and expense drop down
-  handleChangeType = (event) => {
-    this.setState({
-      type: event.target.value
-    })
-  }
-
-  // listening to changes in the description
-  handleDescription = (event) => {
-    this.setState({
-      description: event.target.value,
-    })
-  }
-
-  // listening to changes in the amount
-  handleAmountChange = (event) => {
-    this.setState({
-      amount: event.target.value,
-    })
-  }
-
-  // submit 
-  handleSubmit = (event) => {
-    event.preventDefault();
-
-    const transToBeAdded = {
-      description: this.state.description,
-      amount: this.state.amount,
-      type: this.state.type
-    }
-
-    if (transToBeAdded.description !== "" && transToBeAdded.amount !== "" && transToBeAdded.type !== "") {
-      dbRef.push(transToBeAdded)
-      this.setState({
-        description: "",
-        amount: "",
-      })
-    }
-  }
-
-  handleReset = () => {
-    this.setState({
-      description: "",
-      amount: "",
-      type: ""
-    })
-  }
-
   render() {
-    const { description, amount, type, incomeArray, expenseArray, transList } = this.state
-    const isEnabled = description.length > 0 && amount.length > 0
+    const {incomeArray, expenseArray, transList} = this.state
     return (
       <div className="wrapper">
         <Header />
         {/* dropdown menu */}
         <main>
-          <select 
-          onChange={this.handleChangeType} value={type}>
-            <option value="" > select </option>
-            <option value="income"> income </option>
-            <option value="expense"> expense </option>
-          </select>
           {/* form */}
-          <form onSubmit={this.handleSubmit}>
-            <label htmlFor="transType" className="visuallyHidden"></label>
-            <input id="transType" type="text" placeholder="description" 
-            value={description} onChange={this.handleDescription} />
-            <label htmlFor="transAmount" className="visuallyHidden"></label>
-            <input id="transAmount" type="number" placeholder="amount" min="0" step=".01" 
-            value={amount} 
-            onChange={this.handleAmountChange} />
-            <button disabled={!isEnabled} type="submit"> Add Transaction to List</button>
-            <button type="button" onClick={this.handleReset} > Reset </button>
-          </form>
+          <Form />
           {/* column */}
           <ShowColumn 
           incomeArray={incomeArray} 
           expenseArray={expenseArray}
-          listTrans={transList} />
+          transList=
+          {transList} />
         </main>
         <Footer />
       </div>

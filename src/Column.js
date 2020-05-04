@@ -26,7 +26,7 @@ class ShowColumn extends Component {
           <div>
             <h2> Income </h2>
             <ul>
-              {this.props.listTrans.map((trans, i) => {
+              {this.props.transList.map((trans, i) => {
                 const isType = trans.transObject.type === "income"
                 return (
                   (isType) ?
@@ -45,7 +45,7 @@ class ShowColumn extends Component {
           <div>
             <h2> Expenses </h2>
             <ul>
-              {this.props.listTrans.map((trans, i) => {
+              {this.props.transList.map((trans, i) => {
                 const isType = trans.transObject.type === "expense"
                 return (
                   (isType) ?
