@@ -8,41 +8,8 @@ class Form extends Component {
     this.state = {
       description: "",
       amount: "",
-      type: "select",
+      type: "",
     }
-  }
-
-  // listening to firebase
-  componentDidMount() {
-    dbRef.on("value", (snapshot) => {
-      const trans = snapshot.val();
-
-      const newTrans = [];
-      const newIncomeArray = [];
-      const newExpenseArray = [];
-
-      for (let i in trans) {
-        const singleTrans = {
-          transKey: i,
-          transObject: trans[i],
-        }
-        newTrans.push(singleTrans)
-
-        if (singleTrans.transObject.type === "income") {
-          newIncomeArray.push(singleTrans.transObject.amount)
-        }
-
-        if (singleTrans.transObject.type === "expense") {
-          newExpenseArray.push(singleTrans.transObject.amount)
-        }
-      }
-
-      this.setState({
-        transList: newTrans,
-        incomeArray: newIncomeArray,
-        expenseArray: newExpenseArray,
-      })
-    })
   }
 
   // changing the income and expense drop down
@@ -95,7 +62,8 @@ class Form extends Component {
 
   render() {
     const { description, amount, type} = this.state
-    const isEnabled = description.length > 0 && amount.length > 0
+    const isEnabled = description.length > 0 && amount.length > 0 && type.length > 0
+    console.log(type);
     return (
       <div>
         {/* dropdown menu */}
