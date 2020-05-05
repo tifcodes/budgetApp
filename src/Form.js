@@ -82,8 +82,7 @@ class Form extends Component {
           <select
             onChange={this.handleChangeType} value={type}>
             <option value="" > select </option>
-            <option value="income"> 
-            💰 Income </option>
+            <option value="income"> 💰 Income </option>
             <option value="expense"> 💸 Expense </option>
           </select>
         <select onChange={this.handleChangeCategories} value={categories}>
