@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import dbRef from './firebase'
+import dbRef from './firebase';
+import Result from './Result'
 
-class ShowColumn extends Component {
+class Column extends Component {
   handleDelete = (event) => {
     dbRef.child(event.target.id).remove();
   }
@@ -61,18 +62,12 @@ class ShowColumn extends Component {
             <h4 className="colorPop"> Total: $ {this.handleSubtotal(this.props.expenseArray)} </h4>
           </div>
         </div>
-        <div>
-          {this.handleTotal() >= 0 ?
-
-            <h3 className="colorPositive"> Balance: $ {this.handleTotal()} </h3>
-
-            :
-
-            <h3 className="colorNegative"> Balance: $ {this.handleTotal()} </h3>}
-        </div>
+        <Result 
+          incomeArray = {this.props.incomeArray}
+          expenseArray={this.props.expenseArray} />
       </div>
     )
   }
 }
 
-export default ShowColumn;
+export default Column;

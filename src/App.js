@@ -4,7 +4,7 @@ import "./styles/style.scss"
 import Header from "./Header"
 import Form from "./Form"
 import dbRef from './firebase'
-import ShowColumn from './Column'
+import Column from './Column'
 import Footer from './Footer'
 
 class App extends Component {
@@ -60,7 +60,7 @@ class App extends Component {
           {/* form */}
           <Form />
           {/* column */}
-          <ShowColumn 
+          <Column 
           incomeArray={incomeArray} 
           expenseArray={expenseArray}
           transList=
