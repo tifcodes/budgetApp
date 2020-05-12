@@ -13,14 +13,7 @@ class Column extends Component {
     ).toFixed(2)
   }
 
-  handleTotal = () => {
-    const arr1 = this.handleSubtotal(this.props.incomeArray);
-    const arr2 = this.handleSubtotal(this.props.expenseArray);
-    return (arr1 - arr2).toFixed(2)
-  }
-
   render() {
-    // const {transKey} = this.props.transList
     return (
       <div>
         <div className="flexParent">
@@ -41,7 +34,7 @@ class Column extends Component {
                 )
               })}
             </ul>
-            <h4 className="colorPop"> Total : $ {this.handleSubtotal(this.props.incomeArray)} </h4>
+            <h4 className="colorPop"> Total : $ {this.handleSubtotal(this.props.incomeAmountArray)} </h4>
           </div>
           <div>
             <h2> Expenses </h2>
@@ -59,12 +52,16 @@ class Column extends Component {
                 )
               })}
             </ul>
-            <h4 className="colorPop"> Total: $ {this.handleSubtotal(this.props.expenseArray)} </h4>
+            <h4 className="colorPop"> Total: $ {this.handleSubtotal(this.props.expenseAmountArray)} </h4>
           </div>
         </div>
         <Result 
           incomeArray = {this.props.incomeArray}
-          expenseArray={this.props.expenseArray} />
+          expenseArray={this.props.expenseArray} 
+          transList = {this.props.transList}
+          incomeAmountArray={this.props.incomeAmountArray}
+          expenseAmountArray={this.props.expenseAmountArray}
+          expenseCat={this.props.expenseCat}/>
       </div>
     )
   }

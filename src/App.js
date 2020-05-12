@@ -12,8 +12,11 @@ class App extends Component {
     super();
     this.state = {
       transList: [],
+      incomeAmountArray: [],
+      expenseAmountArray: [],
       incomeArray: [],
       expenseArray: [],
+      expenseCat: []
     }
   }
 
@@ -25,6 +28,9 @@ class App extends Component {
       const newTrans = [];
       const newIncomeArray = [];
       const newExpenseArray = [];
+      const newIncomeAmountArray = [];
+      const newExpenseAmountArray = [];
+      const newExpenseCat = [];
 
       for (let i in trans) {
         const singleTrans = {
@@ -34,11 +40,14 @@ class App extends Component {
         newTrans.push(singleTrans)
 
         if (singleTrans.transObject.type === "income") {
-          newIncomeArray.push(singleTrans.transObject.amount)
+          newIncomeArray.push(singleTrans.transObject)
+          newIncomeAmountArray.push(singleTrans.transObject.amount)
         }
 
         if (singleTrans.transObject.type === "expense") {
-          newExpenseArray.push(singleTrans.transObject.amount)
+          newExpenseArray.push(singleTrans.transObject)
+          newExpenseAmountArray.push(singleTrans.transObject.amount)
+          newExpenseCat.push(singleTrans.transObject.categories)
         }
       }
 
@@ -46,12 +55,19 @@ class App extends Component {
         transList: newTrans,
         incomeArray: newIncomeArray,
         expenseArray: newExpenseArray,
+        incomeAmountArray:
+        newIncomeAmountArray,
+        expenseAmountArray:
+        newExpenseAmountArray,
+        expenseCat:
+        newExpenseCat,
       })
     })
   }
 
   render() {
-    const {incomeArray, expenseArray, transList} = this.state
+    const {incomeArray, expenseArray, transList, incomeAmountArray,
+    expenseAmountArray, expenseCat} = this.state
     return (
       <div className="wrapper">
         <Header />
@@ -61,10 +77,13 @@ class App extends Component {
           <Form />
           {/* column */}
           <Column 
+          transList=
+          {transList}
           incomeArray={incomeArray} 
           expenseArray={expenseArray}
-          transList=
-          {transList} />
+          incomeAmountArray = {incomeAmountArray}
+          expenseAmountArray={expenseAmountArray}
+          expenseCat={expenseCat} />
         </main>
         <Footer />
       </div>
