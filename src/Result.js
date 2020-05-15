@@ -14,12 +14,11 @@ class Result extends Component {
       type: "horizontalBar",
       data: {
         //Bring in data
-        labels: expenseArray.map((data) => data.categories),
+        labels: this.total().map((c) => { return c.split(': ')[0] }),
         datasets: [
           {
             label: "Expense Result",
-            data: expenseArray.map((data) => data.amount),
-            // data: this.a(),
+            data: this.total().map((c) => {return c.split(': ')[1]}),
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
@@ -80,16 +79,14 @@ class Result extends Component {
     return (arr1 - arr2).toFixed(2)
   }
 
-  hello = () => {
+  total = () => {
     const group =
     this.props.expenseArray.reduce((r, a) => {
       r[a.categories] = [...r[a.categories] || [], a];
       return r;
       }, {});
 
-      const c = Object.keys(group)
-
-      return c.forEach((g) => {
+      return Object.keys(group).map((g) => {
         if (group[g] === undefined) {
             return
           } else {
@@ -97,20 +94,12 @@ class Result extends Component {
               a += parseFloat(dat.amount)
               return a;
             }, 0)
-            const script = 
-              `${g}: ${b}`
-            console.log(script);
+            return `${g}: ${b}`;
           }
       })
     }
-
-  render() {
-    console.log(this.hello());
     
-    // console.log(this.props.expenseArray);
-
-    // const array1 = this.reduceArray(this.props.expenseArray)
-    // console.log(array1);
+  render() {
     
     return (
       <div>
@@ -125,7 +114,6 @@ class Result extends Component {
           id="myChart"
           ref={this.chartRef}
       />
-        <div> {this.hello()} </div>
       </div>
     )
   }
