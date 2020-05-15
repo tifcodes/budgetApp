@@ -14,11 +14,11 @@ class Result extends Component {
       type: "horizontalBar",
       data: {
         //Bring in data
-        labels: this.total().map((c) => { return c.split(': ')[0] }),
+        labels: this.consolidateTrans().map((cat) => { return cat.split(': ')[0] }),
         datasets: [
           {
             label: "Expense Result",
-            data: this.total().map((c) => {return c.split(': ')[1]}),
+            data: this.consolidateTrans().map((cat) => {return cat.split(': ')[1]}),
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
@@ -79,28 +79,27 @@ class Result extends Component {
     return (arr1 - arr2).toFixed(2)
   }
 
-  total = () => {
-    const group =
-    this.props.expenseArray.reduce((r, a) => {
-      r[a.categories] = [...r[a.categories] || [], a];
-      return r;
+  consolidateTrans = () => {
+    const consolidateCat =
+    this.props.expenseArray.reduce((acc, trans) => {
+      acc[trans.categories] = [...acc[trans.categories] || [], trans];
+      return acc;
       }, {});
 
-      return Object.keys(group).map((g) => {
-        if (group[g] === undefined) {
+      return Object.keys(consolidateCat).map((category) => {
+        if (consolidateCat[category] === undefined) {
             return
           } else {
-            const b = group[g].reduce((a, dat) => {
-              a += parseFloat(dat.amount)
-              return a;
+            const consolidateTotal = consolidateCat[category].reduce((accTotal, trans) => {
+              accTotal += parseFloat(trans.amount)
+              return accTotal;
             }, 0)
-            return `${g}: ${b}`;
+            return `${category}: ${consolidateTotal}`;
           }
       })
     }
     
   render() {
-    
     return (
       <div>
         {this.handleTotal() >= 0 ?
