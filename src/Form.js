@@ -81,50 +81,56 @@ class Form extends Component {
         {/* dropdown menu */}
           <select
             onChange={this.handleChangeType} value={type}>
-            <option value="" > select </option>
-            <option value="income"> 💰 Income </option>
-            <option value="expense"> 💸 Expense </option>
+            <option value="" > Select </option>
+            <option value="Expense"> 
+            💸 Expense 
+            </option>
+            <option value="Income"> 
+            💰 Income 
+            </option>
           </select>
         <select onChange={this.handleChangeCategories} value={categories}>
-          <option value=""> category </option>
-            <option value="housing">
-              🏡 Housing
-            </option>
-          <option value="transportation">
-            🚗 Transportation
-            </option>
-          <option value="food">
-            🍱 Food
+          <option value=""> 
+            Category
           </option>
-          <option value="utilities">
-            💡 Utilities
-          </option>
-          <option value="insurance">
-            👩‍⚕️ Insurance
-          </option>
-          <option value="medical">
-            🩺 Medical & HealthCare
-          </option>
-          <option value="personal">
-            🧖‍♀️ Personal
-          </option>
-          <option value="saving">
-            💵 Saving
-          </option>
-          <option value="debt">
+          <option value="Debt">
             💸 Debt
           </option>
-          <option value="retirement">
-            👵 Retirement
-          </option>
-          <option value="education">
+          <option value="Education">
             📚 Education
           </option>
-          <option value="gifts">
+          <option value="Entertainment">
+            🎬 Entertainment
+          </option>
+          <option value="Food">
+            🍱 Food
+          </option>
+          <option value="Gifts">
             🧧 Gifts
           </option>
-          <option value="entertainment">
-            🎬 Entertainment
+          <option value="Housing">
+            🏡 Housing
+            </option>
+          <option value="Insurance">
+            👩‍⚕️ Insurance
+          </option>
+          <option value="Medical">
+            🩺 Medical & HealthCare
+          </option>
+          <option value="Personal">
+            🧖‍♀️ Personal
+          </option>
+          <option value="Retirement">
+            👵 Retirement
+          </option>
+          <option value="Saving">
+            💵 Saving
+          </option>
+          <option value="Transportation">
+            🚗 Transportation
+          </option>
+          <option value="Utilities">
+            💡 Utilities
           </option>
 
           </select>

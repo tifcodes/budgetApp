@@ -23,7 +23,7 @@ class Column extends Component {
               {this.props.transList.map((trans, i) => {
                 const {type, description, amount} = trans.transObject;               
                 return (
-                  (type === "income") ?
+                  (type === "Income") ?
 
                     <li key={i}> 
                     <i className="fa fa-minus-circle" aria-hidden="true" 
@@ -42,7 +42,7 @@ class Column extends Component {
               {this.props.transList.map((trans, i) => {
                 const { type, description, amount } = trans.transObject; 
                 return (
-                  (type === "expense") ?
+                  (type === "Expense") ?
 
                     <li key={i}> 
                     <i className="fa fa-minus-circle" aria-hidden="true" id={trans.transKey} onClick={this.handleDelete}></i>  {description

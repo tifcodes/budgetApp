@@ -17,7 +17,7 @@ class Result extends Component {
         labels: this.consolidateTrans().map((c) => { return c.split(': ')[0] }),
         datasets: [
           {
-            label: "Expense Result",
+            label: "Expense ($)",
             data: this.consolidateTrans().map((c) => {return c.split(': ')[1]}),
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -35,7 +35,7 @@ class Result extends Component {
               "rgba(153, 102, 255, 1)",
               "rgba(255, 159, 64, 1)"
             ],
-            borderWidth: 1
+            borderWidth: 1,
           }
         ],
       },
@@ -43,7 +43,7 @@ class Result extends Component {
         //Customize chart options
         legend: {
           labels: {
-            fontSize: 22
+            fontSize: 18
           }
         },
         scales: {
@@ -51,14 +51,15 @@ class Result extends Component {
             {
               ticks: {
                 beginAtZero: true,
-                fontSize: 22
+                fontSize: 18
               }
             }
           ],
           yAxes: [
             {
+              type: 'category',
               ticks: {
-                fontSize: 22
+                fontSize: 18
               }
             }
           ]

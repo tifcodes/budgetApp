@@ -39,12 +39,12 @@ class App extends Component {
         }
         newTrans.push(singleTrans)
 
-        if (singleTrans.transObject.type === "income") {
+        if (singleTrans.transObject.type === "Income") {
           newIncomeArray.push(singleTrans.transObject)
           newIncomeAmountArray.push(singleTrans.transObject.amount)
         }
 
-        if (singleTrans.transObject.type === "expense") {
+        if (singleTrans.transObject.type === "Expense") {
           newExpenseArray.push(singleTrans.transObject)
           newExpenseAmountArray.push(singleTrans.transObject.amount)
           newExpenseCat.push(singleTrans.transObject.categories)

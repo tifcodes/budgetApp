@@ -127,6 +127,9 @@ main {
       ul {
         background-color: $secondaryColor;
         border-radius: 5px;
+        li {
+          text-transform: capitalize;
+        }
       }
       @include forTablet {
         width: calc(50% - 10px);

@@ -1,8 +1,10 @@
 footer {
+  height: 5vh;
   color: $accentColor;
   font-family: $righteous;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   font-weight: bold;
 }
