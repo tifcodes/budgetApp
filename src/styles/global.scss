@@ -6,6 +6,26 @@ $accentColor: #A9C1D9;
 
 $righteous: 'Righteous', cursive;
 
+@mixin forPhone {
+  @media (max-width: 599px) { @content; }
+}
+
+@mixin forTablet {
+  @media (min-width: 900px) { @content; }
+}
+
+@mixin forSmallDesktop {
+  @media (max-width: 1200px) { @content; }
+}
+
+@mixin forDesktop {
+  @media (max-width: 1600px) { @content; }
+}
+
+@mixin forBigDesktop {
+  @media (min-width: 1601px) { @content; }
+}
+
 * {
   margin: 0;
   padding: 0;

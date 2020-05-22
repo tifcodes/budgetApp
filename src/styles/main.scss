@@ -12,6 +12,9 @@ button,
 h1 {
   color: $accentColor;
   font-size: 3rem;
+  @include forTablet {
+    font-size: 4rem;
+  }
 }
 
 header {
@@ -35,6 +38,9 @@ main {
     border-radius: 5px;
     display: inline-block;
     padding: 5px 10px;
+    @include forTablet{
+      align-self: center;
+    }
   }
   
   label,
@@ -45,8 +51,29 @@ main {
     border-radius: 5px;
     margin: 20px 0;
     &:hover,
-    &:focus{
+    &:focus {
       box-shadow: 0 0 3px 2px $accentColor;
+    }
+  }
+
+  input {
+    @include forTablet {
+      width: calc(50% - 10px);
+      display: inline-block;
+      margin-right: 10px;
+      }
+  }
+
+  form {
+    @include forTablet {
+      text-align: left;
+      div {
+        display: flex;
+        justify-content: center;
+        button {
+          margin: 10px 5px;
+        }
+      }
     }
   }
   
@@ -58,6 +85,11 @@ main {
     &:hover,
     &:focus{
       box-shadow: 0 0 3px 2px $accentColor;
+    }
+    @include forTablet {
+      width: calc(50% - 10px);
+      display: inline-block;
+      margin-right: 10px;
     }
   }
   
@@ -87,12 +119,20 @@ main {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    div 
+    @include forTablet{
+      flex-direction: row;
+    }
+    div {
       h2,
       ul {
         background-color: $secondaryColor;
         border-radius: 5px;
       }
+      @include forTablet {
+        width: calc(50% - 10px);
+        margin-right: 10px;
+      }
+    }
   }
   
   .colorPop {

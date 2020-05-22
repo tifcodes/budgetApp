@@ -14,11 +14,11 @@ class Result extends Component {
       type: "horizontalBar",
       data: {
         //Bring in data
-        labels: this.consolidateTrans().map((cat) => { return cat.split(': ')[0] }),
+        labels: this.consolidateTrans().map((c) => { return c.split(': ')[0] }),
         datasets: [
           {
             label: "Expense Result",
-            data: this.consolidateTrans().map((cat) => {return cat.split(': ')[1]}),
+            data: this.consolidateTrans().map((c) => {return c.split(': ')[1]}),
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",
