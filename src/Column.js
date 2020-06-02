@@ -13,6 +13,12 @@ class Column extends Component {
     ).toFixed(2)
   }
 
+  handleTotal = () => {
+    const arr1 = this.handleSubtotal(this.props.incomeAmountArray);
+    const arr2 = this.handleSubtotal(this.props.expenseAmountArray);
+    return (arr1 - arr2).toFixed(2)
+  }
+
   render() {
     return (
       <div>
@@ -54,7 +60,17 @@ class Column extends Component {
             </ul>
             <h4 className="colorPop"> Total: $ {this.handleSubtotal(this.props.expenseAmountArray)} </h4>
           </div>
+          <div>
+            {this.handleTotal() >= 0 ?
+
+              <h3 className="colorPositive"> Balance: $ {this.handleTotal()} </h3>
+
+              :
+
+              <h3 className="colorNegative"> Balance: $ {this.handleTotal()} </h3>}
+          </div>
         </div>
+
         <Result 
           incomeArray = {this.props.incomeArray}
           expenseArray={this.props.expenseArray} 
