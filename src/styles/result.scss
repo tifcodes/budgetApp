@@ -1,4 +1,10 @@
-canvas {
-  background-color: $white;
-  margin: 20px 0;
+.chartResult {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  canvas {
+    background-color: $white;
+    margin: 20px 0;
+  }
 }

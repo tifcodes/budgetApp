@@ -78,10 +78,12 @@ class Result extends Component {
     
   render() {
     return (
+      <div className = "chartResult">
         <canvas
           id="myChart"
           ref={this.chartRef}
       />
+      </div>
     )
   }
 }
