@@ -21,9 +21,8 @@ class Column extends Component {
 
   render() {
     return (
-      <div>
         <div className="flexParent">
-          <div>
+          <div className = "column">
             <h2> Income </h2>
             <ul>
               {this.props.transList.map((trans, i) => {
@@ -42,7 +41,7 @@ class Column extends Component {
             </ul>
             <h4 className="colorPop"> Total : $ {this.handleSubtotal(this.props.incomeAmountArray)} </h4>
           </div>
-          <div>
+          <div className = "column">
             <h2> Expenses </h2>
             <ul>
               {this.props.transList.map((trans, i) => {
@@ -60,7 +59,7 @@ class Column extends Component {
             </ul>
             <h4 className="colorPop"> Total: $ {this.handleSubtotal(this.props.expenseAmountArray)} </h4>
           </div>
-          <div>
+          <div className = "balance">
             {this.handleTotal() >= 0 ?
 
               <h3 className="colorPositive"> Balance: $ {this.handleTotal()} </h3>
@@ -70,15 +69,6 @@ class Column extends Component {
               <h3 className="colorNegative"> Balance: $ {this.handleTotal()} </h3>}
           </div>
         </div>
-
-        <Result 
-          incomeArray = {this.props.incomeArray}
-          expenseArray={this.props.expenseArray} 
-          transList = {this.props.transList}
-          incomeAmountArray={this.props.incomeAmountArray}
-          expenseAmountArray={this.props.expenseAmountArray}
-          expenseCat={this.props.expenseCat}/>
-      </div>
     )
   }
 }

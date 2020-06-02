@@ -122,7 +122,7 @@ main {
     @include forTablet{
       flex-direction: row;
     }
-    div {
+    .column {
       h2,
       ul {
         background-color: $secondaryColor;
@@ -137,17 +137,28 @@ main {
       }
     }
   }
+
+  .inputResult {
+    min-height: 100vh;
+  }
   
   .colorPop {
     color: white;
   }
   
-  .colorPositive {
-    color: green;
-  }
-  
-  .colorNegative {
-    color: red;
+  .balance {
+    margin: 0 auto;
+    .colorPositive {
+      color: green;
+    }
+    
+    .colorNegative {
+      color: red;
+    }
+
+    @include forTablet {
+      margin: 0 auto;
+    }
   }
 }
 

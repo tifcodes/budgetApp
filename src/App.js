@@ -5,6 +5,7 @@ import Header from "./Header"
 import Form from "./Form"
 import dbRef from './firebase'
 import Column from './Column'
+import Result from './Result'
 import Footer from './Footer'
 
 class App extends Component {
@@ -73,17 +74,26 @@ class App extends Component {
         <Header />
         {/* dropdown menu */}
         <main>
-          {/* form */}
-          <Form />
-          {/* column */}
-          <Column 
-          transList=
-          {transList}
-          incomeArray={incomeArray} 
-          expenseArray={expenseArray}
-          incomeAmountArray = {incomeAmountArray}
-          expenseAmountArray={expenseAmountArray}
-          expenseCat={expenseCat} />
+          <div className = "inputResult">
+            {/* form */}
+            <Form />
+            {/* column */}
+            <Column 
+            transList=
+            {transList}
+            incomeArray={incomeArray} 
+            expenseArray={expenseArray}
+            incomeAmountArray = {incomeAmountArray}
+            expenseAmountArray={expenseAmountArray}
+            expenseCat={expenseCat} />
+          </div>
+          <Result
+            incomeArray={incomeArray}
+            expenseArray={expenseArray}
+            transList={transList}
+            incomeAmountArray={incomeAmountArray}
+            expenseAmountArray={expenseAmountArray}
+            expenseCat={expenseCat} />
         </main>
         <Footer />
       </div>
